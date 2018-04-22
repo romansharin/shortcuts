@@ -7,13 +7,16 @@ SetCapsLockState, AlwaysOff
 ; Key codes (vk43 and so on) are used in order to make shortucts independent of selected keyboard layout
 
 ; GLOBAL
+^Space::Send, {Ctrl Up}{Alt Down}{Shift}{Alt up} ; Crt + Space = switch keyboard layout
+
+; Custom CapsLock based shortuts for carret navigation
 CapsLock & j::Send, {Left} ; CapsLock + j = left
 CapsLock & k::Send, {Down} ; CapsLock + k = down
 CapsLock & l::Send, {Right} ; CapsLock + l = right
 CapsLock & i::Send, {Up} ; CapsLock + i = up
 CapsLock & h::Send, {Backspace} ; CapsLock + h = backspace
-CapsLock & u::Send, ^{Left} ; CapsLock + u = backspace move carret to the beginning of previous word
-CapsLock & o::Send, ^{Right} ; CapsLock + o = backspace move carret to the beginning of next word
+CapsLock & u::Send, ^{Left} ; CapsLock + u = move carret to the beginning of previous word
+CapsLock & o::Send, ^{Right} ; CapsLock + o = move carret to the beginning of next word
 CapsLock & m::Send, {Home} ; CapsLock + m = move carret to the beginning of the line
 CapsLock & .::Send, {End} ; CapsLock + . = move carret to the end of the line
 
