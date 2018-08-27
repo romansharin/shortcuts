@@ -2,14 +2,15 @@
 SendMode Input
 SetCapsLockState, AlwaysOff
 
-; Script that emulates some of macOS shortcuts by making Windows' Alt key behave like Mac's Command key
+; Script that provides custom text navigation and screen scrolling shortucts for keyboard-only editing experience
+; Also emulates some of macOS shortcuts
 ; Original shortcuts are still usable
 ; Key codes (vk43 and so on) are used in order to make shortucts independent of selected keyboard layout
 
 ; GLOBAL
 ^Space::Send, {Ctrl Up}{Alt Down}{Shift}{Alt up} ; Crt + Space = switch keyboard layout
 
-; Custom CapsLock based shortuts for carret navigation
+; Custom carret navigation
 CapsLock & j::Send, {Left} ; CapsLock + j = left
 CapsLock & k::Send, {Down} ; CapsLock + k = down
 CapsLock & l::Send, {Right} ; CapsLock + l = right
@@ -20,9 +21,26 @@ CapsLock & o::Send, ^{Right} ; CapsLock + o = move carret to the beginning of ne
 CapsLock & m::Send, {Home} ; CapsLock + m = move carret to the beginning of the line
 CapsLock & .::Send, {End} ; CapsLock + . = move carret to the end of the line
 
-; JetBrains IDEs have their own settings for those shortcuts (install Mac OS X 10_5 for Windows keymap)
-#if (!WinActive("ahk_exe webstorm64.exe") && !WinActive("ahk_exe rider64.exe"))
+; Same custom carret navigation keys but with text selection
+#If GetKeyState("Shift", "P")
+	CapsLock & j::Send, +{Left} ; CapsLock + j = left
+	CapsLock & k::Send, +{Down} ; CapsLock + k = down
+	CapsLock & l::Send, +{Right} ; CapsLock + l = right
+	CapsLock & i::Send, +{Up} ; CapsLock + i = up
+	CapsLock & u::Send, ^+{Left} ; CapsLock + u = move carret to the beginning of previous word
+	CapsLock & o::Send, ^+{Right} ; CapsLock + o = move carret to the beginning of next word
+	CapsLock & m::Send, +{Home} ; CapsLock + m = move carret to the beginning of the line
+	CapsLock & .::Send, +{End} ; CapsLock + . = move carret to the end of the line
+#If
 
+; Custorm screen scrolling
+CapsLock & w::Send, {PGUP} ; CapsLock + w = scroll up
+CapsLock & s::Send, {PGDN} ; CapsLock + s = scroll down
+CapsLock & a::Send, {WheelLeft} ; CapsLock + a = scroll left
+CapsLock & d::Send, {WheelRight} ; CapsLock + d = scroll right
+
+; Mac-like shortcuts
+; Alt becomes Cmd, Win becomes Option, Ctrl is Ctrl
 !c::Send, ^{vk43} ; Alt + C = copy
 !v::Send, ^{vk56} ; Alt + V = paste
 !x::Send, ^{vk58} ; Alt + X = cut
@@ -31,20 +49,17 @@ CapsLock & .::Send, {End} ; CapsLock + . = move carret to the end of the line
 !z::Send, ^{vk5a} ; Alt + Z = undo
 !+z::Send, ^+{vk5a} ; Alt + Shift + Z = redo (in some apps)
 !f::Send, ^{vk46} ; Alt + F = search
-!BackSpace::Send ^{BackSpace} ; Alt + Backspace = delete whole word
+#BackSpace::Send ^{BackSpace} ; Win + Backspace = delete whole word
+!BackSpace::Send {Shift Down}{Home}{Shift Up}{BackSpace} ; Alt + Backspace = delete whole line
 !Left::Send, {Home} ; Alt + Left = move carret to the beginning of the line
 !Right::Send, {End} ; Alt + Right = move carret to the end of the line
 #Left::Send, ^{Left} ; Win + Left = move carret to the beginning of previous word
 #Right::Send, ^{Right} ; Win + Right = move carret to the beginning of next word
 
-#if
-
 ; Google Chrome
 #IfWinActive ahk_exe chrome.exe
-
-!r::Send, ^{vk52} ; Alt + R = refresh
-!w::Send, ^{vk57} ; Alt + W = close current tab
-!t::Send, ^{vk54} ; Alt + T = new tab
-!+t::Send, ^+{vk54} ; Alt + Shift + T = reopen previous tab
-
+	!r::Send, ^{vk52} ; Alt + R = refresh
+	!w::Send, ^{vk57} ; Alt + W = close current tab
+	!t::Send, ^{vk54} ; Alt + T = new tab
+	!+t::Send, ^+{vk54} ; Alt + Shift + T = reopen previous tab
 #IfWinActive
