@@ -2,38 +2,38 @@
 SendMode Input
 SetCapsLockState, AlwaysOff
 
-; Script that provides custom text navigation and screen scrolling shortucts for keyboard-only editing experience
+; Script that provides custom text navigation and screen scrolling shortcuts for keyboard-only editing experience
 ; Also emulates some of macOS shortcuts
 ; Original shortcuts are still usable
-; Key codes (vk43 and so on) are used in order to make shortucts independent of selected keyboard layout
+; Key codes (vk43 and so on) are used in order to make shortcuts independent of selected keyboard layout
 
 ; GLOBAL
 ^Space::Send, {Ctrl Up}{Alt Down}{Shift}{Alt up} ; Crt + Space = switch keyboard layout
 
-; Custom carret navigation
+; Custom caret navigation
 CapsLock & j::Send, {Left} ; CapsLock + j = left
 CapsLock & k::Send, {Down} ; CapsLock + k = down
 CapsLock & l::Send, {Right} ; CapsLock + l = right
 CapsLock & i::Send, {Up} ; CapsLock + i = up
 CapsLock & h::Send, {Backspace} ; CapsLock + h = backspace
-CapsLock & u::Send, ^{Left} ; CapsLock + u = move carret to the beginning of previous word
-CapsLock & o::Send, ^{Right} ; CapsLock + o = move carret to the beginning of next word
-CapsLock & m::Send, {Home} ; CapsLock + m = move carret to the beginning of the line
-CapsLock & .::Send, {End} ; CapsLock + . = move carret to the end of the line
+CapsLock & u::Send, ^{Left} ; CapsLock + u = move caret to the beginning of previous word
+CapsLock & o::Send, ^{Right} ; CapsLock + o = move caret to the beginning of next word
+CapsLock & m::Send, {Home} ; CapsLock + m = move caret to the beginning of the line
+CapsLock & .::Send, {End} ; CapsLock + . = move caret to the end of the line
 
-; Same custom carret navigation keys but with text selection
+; Same custom caret navigation keys but with text selection
 #If GetKeyState("Shift", "P")
 	CapsLock & j::Send, +{Left} ; CapsLock + j = left
 	CapsLock & k::Send, +{Down} ; CapsLock + k = down
 	CapsLock & l::Send, +{Right} ; CapsLock + l = right
 	CapsLock & i::Send, +{Up} ; CapsLock + i = up
-	CapsLock & u::Send, ^+{Left} ; CapsLock + u = move carret to the beginning of previous word
-	CapsLock & o::Send, ^+{Right} ; CapsLock + o = move carret to the beginning of next word
-	CapsLock & m::Send, +{Home} ; CapsLock + m = move carret to the beginning of the line
-	CapsLock & .::Send, +{End} ; CapsLock + . = move carret to the end of the line
+	CapsLock & u::Send, ^+{Left} ; CapsLock + u = move caret to the beginning of previous word
+	CapsLock & o::Send, ^+{Right} ; CapsLock + o = move caret to the beginning of next word
+	CapsLock & m::Send, +{Home} ; CapsLock + m = move caret to the beginning of the line
+	CapsLock & .::Send, +{End} ; CapsLock + . = move caret to the end of the line
 #If
 
-; Custorm screen scrolling
+; Custom screen scrolling
 CapsLock & w::Send, {PGUP} ; CapsLock + w = scroll up
 CapsLock & s::Send, {PGDN} ; CapsLock + s = scroll down
 CapsLock & a::Send, {WheelLeft} ; CapsLock + a = scroll left
@@ -51,10 +51,10 @@ CapsLock & d::Send, {WheelRight} ; CapsLock + d = scroll right
 !f::Send, ^{vk46} ; Alt + F = search
 #BackSpace::Send ^{BackSpace} ; Win + Backspace = delete whole word
 !BackSpace::Send {Shift Down}{Home}{Shift Up}{BackSpace} ; Alt + Backspace = delete whole line
-!Left::Send, {Home} ; Alt + Left = move carret to the beginning of the line
-!Right::Send, {End} ; Alt + Right = move carret to the end of the line
-#Left::Send, ^{Left} ; Win + Left = move carret to the beginning of previous word
-#Right::Send, ^{Right} ; Win + Right = move carret to the beginning of next word
+!Left::Send, {Home} ; Alt + Left = move caret to the beginning of the line
+!Right::Send, {End} ; Alt + Right = move caret to the end of the line
+#Left::Send, ^{Left} ; Win + Left = move caret to the beginning of previous word
+#Right::Send, ^{Right} ; Win + Right = move caret to the beginning of next word
 
 ; Google Chrome
 #IfWinActive ahk_exe chrome.exe
