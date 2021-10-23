@@ -2,8 +2,6 @@
 SendMode Input
 SetCapsLockState, AlwaysOff
 
-; Script that provides custom text navigation and screen scrolling shortcuts for keyboard-only editing experience
-; Also emulates some of macOS shortcuts
 ; Original shortcuts are still usable
 ; Key codes (vk43 and so on) are used in order to make shortcuts independent of selected keyboard layout
 
