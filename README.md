@@ -1,5 +1,5 @@
 # shortcuts
-Custom hotkeys for caret manipulation. Also emulates some of macOS shortcuts on Windows. Inspired by [http://tonsky.me/blog/cursor-keys/](http://tonsky.me/blog/cursor-keys/)
+Custom hotkeys for caret manipulation and scrolling. Also emulates some of macOS shortcuts on Windows. Inspired by [http://tonsky.me/blog/cursor-keys/](http://tonsky.me/blog/cursor-keys/)
 
 ## Common
 ### Caret manipulation
@@ -8,8 +8,8 @@ Custom hotkeys for caret manipulation. Also emulates some of macOS shortcuts on 
 - `CapsLock` + `L` = right arrow
 - `CapsLock` + `I` = up arrow
 - `CapsLock` + `H` = backspace
-- `CapsLock` + `U` = move caret to the beginning of the previous word
-- `CapsLock` + `O` = move caret to the beginning of the next word
+- `CapsLock` + `U` = move caret to the beginning of the word
+- `CapsLock` + `O` = move caret to the end of the word
 - `CapsLock` + `M` = move caret to the beginning of the line
 - `CapsLock` + `.` = move caret to the end of the line
 
